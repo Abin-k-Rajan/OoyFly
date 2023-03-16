@@ -1,0 +1,51 @@
+.herosection-container {
+    background-color: hsl(218, 70%, 55%);
+    height: 285px;
+    width: 100%;
+    padding: 0px 40px;
+    position: relative;
+    // overflow: hidden;
+    // z-index: -999;
+    margin-bottom: 170px;
+}
+
+.herosection-content {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    padding: 20px 70px;
+}
+
+.hero-text {
+    font-size: 1.5em;
+    color: var(--light-font);
+    font-weight: 500;
+    padding: 20px 0px;
+}
+
+
+
+
+.hero-svg-block {
+    position: absolute;
+    bottom: -120px;
+    left: 0;
+    right: 0;
+    .hero-svg {
+        // fill: var(--light-font);
+        fill: rgba($color: #ffff, $alpha: 0.7);
+    }
+}
+
+.hero-svg-block-second {
+    position: absolute;
+    bottom: -150px;
+    left: 0;
+    right: 0;
+    .hero-svg {
+        // fill: var(--light-font);
+        fill: rgba($color: #ffff, $alpha: 1.0);
+    }
+}

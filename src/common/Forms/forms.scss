@@ -1,0 +1,43 @@
+
+  //Input Animation Styles
+
+// .select-input {
+//     width: 100%;
+//     height: 55px;
+//     font-size: 1.2em;
+//     transition: 0.6s;
+//     border: none;
+//     border: 2px solid #CCC;
+//     background-color: transparent;
+//     border-radius: 10px;
+//     &:focus {
+//       outline: none;
+//       border: 2px solid #3C77DD;
+//     }
+// }
+
+
+.input-text {
+    width: 100%;
+    &:focus {
+        outline: none;
+        border: 2px solid #3C77DD;
+      }
+}
+
+.select-input {
+    width: 400px;
+}
+
+.submit-btn {
+  height: 60px;
+  width: 300px;
+  cursor: pointer;
+  background-color: #3C77DD;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
