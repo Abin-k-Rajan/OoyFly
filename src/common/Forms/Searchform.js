@@ -57,11 +57,11 @@ function Searchform() {
       <div className="text-inputs grid grid-flow-col gap-5 py-5">
           <div className="relative">
               {/* <TextField className="input-text-search" id='from-station' label='From Station' onChange={onValueChange}/> */}
-              <SearchStation label='FROM' theme='light'/>
+              <SearchStation label='FROM' theme='light' onChangeValue={(val) => setFromStation(val)}/>
           </div>
           <div className="relative">
               {/* <TextField className="input-text-search" id="to-station" label='Destination' onChange={onValueChange}/> */}
-              <SearchStation label='TO' theme='light'/>
+              <SearchStation label='TO' theme='light' onChangeValue={(val) => setDestination(val)}/>
           </div>
       </div>
       <div className="grid grid-flow-col gap-5 place-content-start">
@@ -76,21 +76,7 @@ function Searchform() {
         </LocalizationProvider>
         </div>
         <div>
-          {/* <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Class</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              label="Class_"
-              className="select-input"
-              onChange={(value) => setClass(value)}
-            >
-              <MenuItem value='Economy'>Economy</MenuItem>
-              <MenuItem value='Business'>Business</MenuItem>
-              <MenuItem value='First'>First</MenuItem>
-            </Select>
-          </FormControl> */}
-          <PassengerClassCard />
+          <PassengerClassCard theme='light' />
         </div>
       </div>
       <div className="grid grid-flow-col gap-8 place-content-center my-5">

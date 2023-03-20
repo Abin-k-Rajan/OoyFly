@@ -26,7 +26,7 @@ function Type_Number ({label, count, min = 0, onIncrement, onDecrement}) {
 }
 
 
-function PassengerClassCard() {
+function PassengerClassCard(props) {
     const [classDialogBox, setClassDialogBox] = useState(false)
     const boxRef = useRef();
 
@@ -56,7 +56,7 @@ function PassengerClassCard() {
     return (
         <Fragment>
             <div  ref={boxRef} className="">
-                <input className="input-text-select" type='text' placeholder="Traveller & Class" onClick={(event) => setClassDialogBox(true)} readOnly={'readonly'} value={textValue}/>
+                <input className={`input-text-select ${props.theme === 'light' ? 'light': ''}`} type='text' placeholder="Traveller & Class" onClick={(event) => setClassDialogBox(true)} readOnly={'readonly'} value={textValue}/>
             </div>
             <div className={classDialogBox === true ? 'show' : 'hide'}>
                 <div className={"passenger_class_container"}>

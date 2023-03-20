@@ -24,7 +24,7 @@ const stations = [
 ]
 
 
-function SearchStation(props) {
+function SearchStation({label, theme, onChangeValue}) {
 
     const [filteredStation, setFilteredStation] = useState([])
     const [searchStationView, setSearchStationView] = useState(false)
@@ -48,18 +48,20 @@ function SearchStation(props) {
         })
         setSearchStationView(true)
         setFilteredStation(temp_list)
+        onChangeValue(event.target.value)
     }
 
     const change_text = (event) => {
         input_ref.current.value = event.target.value
         setSearchStationView(false)
+        onChangeValue(event.target.value)
     }
 
     return (
         <Fragment>
             <div className="relative">
-                <label className={props.theme === 'light' ? `dark-label` : `white-label`}>{props.label}</label>
-                <input className={props.theme === 'light' ? `light-input` : `dark-input`} ref={input_ref} type={'text'} onChange={filterStation} />
+                <label className={theme === 'light' ? `dark-label` : `white-label`}>{label}</label>
+                <input className={theme === 'light' ? `light-input` : `dark-input`} ref={input_ref} type={'text'} onChange={filterStation} />
                 <div className={searchStationView === true ? 'show' : 'hidden'}>
                     <div className="search-view">
                         {
