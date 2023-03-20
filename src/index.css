@@ -10,7 +10,9 @@
 
 .bd-grid {
   max-width: 75%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto;
+}
+
+.bd-container {
+  width: 100%;
 }

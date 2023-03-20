@@ -1,0 +1,29 @@
+.listcard-container {
+    height: 150px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.sub-text {
+    font-size: 0.8em;
+    color: rgb(65, 64, 64)
+}
+
+
+.heading {
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.price-text {
+    font-size: 1.8em;
+    font-weight: 500;
+}
+
+.book-button {
+    background-color: rgb(255, 145, 0);
+    height: 50px;
+    width: 120px;
+    border-radius: 25px;
+    color: white;
+    font-weight: 700;
+}

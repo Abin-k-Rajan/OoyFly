@@ -51,7 +51,7 @@ function Searchform() {
 
     
   return (
-    <form onSubmit={formSubmit}>
+    <form className="search-form" onSubmit={formSubmit}>
       <div className="text-inputs grid grid-flow-col gap-5 py-5">
           <div className="relative">
               <TextField className="input-text" id='from-station' label='From Station' onChange={onValueChange}/>
