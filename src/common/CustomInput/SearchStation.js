@@ -58,8 +58,8 @@ function SearchStation(props) {
     return (
         <Fragment>
             <div className="relative">
-                <label className={`white-label`}>{props.label}</label>
-                <input className={`dark-input`} ref={input_ref} type={'text'} onChange={filterStation} />
+                <label className={props.theme === 'light' ? `dark-label` : `white-label`}>{props.label}</label>
+                <input className={props.theme === 'light' ? `light-input` : `dark-input`} ref={input_ref} type={'text'} onChange={filterStation} />
                 <div className={searchStationView === true ? 'show' : 'hidden'}>
                     <div className="search-view">
                         {

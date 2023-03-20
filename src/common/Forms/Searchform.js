@@ -6,6 +6,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Button, FormControl, FormControlLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from "@mui/material";
 import { FormLabel } from "react-bootstrap";
+import SearchStation from "../CustomInput/SearchStation";
+import PassengerClassCard from "../CustomInput/PassengerClassCard";
 
 function Searchform() {
   const [toggle_options] = useState(['One-Way', 'Round-Trip', 'Multi-Way'])
@@ -54,10 +56,12 @@ function Searchform() {
     <form className="search-form" onSubmit={formSubmit}>
       <div className="text-inputs grid grid-flow-col gap-5 py-5">
           <div className="relative">
-              <TextField className="input-text-search" id='from-station' label='From Station' onChange={onValueChange}/>
+              {/* <TextField className="input-text-search" id='from-station' label='From Station' onChange={onValueChange}/> */}
+              <SearchStation label='FROM' theme='light'/>
           </div>
           <div className="relative">
-              <TextField className="input-text-search" id="to-station" label='Destination' onChange={onValueChange}/>
+              {/* <TextField className="input-text-search" id="to-station" label='Destination' onChange={onValueChange}/> */}
+              <SearchStation label='TO' theme='light'/>
           </div>
       </div>
       <div className="grid grid-flow-col gap-5 place-content-start">
@@ -72,7 +76,7 @@ function Searchform() {
         </LocalizationProvider>
         </div>
         <div>
-          <FormControl fullWidth>
+          {/* <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Class</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -85,7 +89,8 @@ function Searchform() {
               <MenuItem value='Business'>Business</MenuItem>
               <MenuItem value='First'>First</MenuItem>
             </Select>
-          </FormControl>
+          </FormControl> */}
+          <PassengerClassCard />
         </div>
       </div>
       <div className="grid grid-flow-col gap-8 place-content-center my-5">
