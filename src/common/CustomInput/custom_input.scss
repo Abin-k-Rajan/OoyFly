@@ -1,0 +1,51 @@
+.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.passenger_class_container {
+    height: 200px;
+    width: 600px;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    border-radius: 10px;
+    position: absolute;
+    margin-top: 10px;
+    right: 20px;
+}
+
+
+.blue-sub-heading {
+    font-size: 1.6em;
+    color: var(--body-color-primary);
+    font-weight: 600;
+}
+
+.heading-type-number {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+
+.select-button {
+    background-color: rgb(255, 145, 0);
+    height: 50px;
+    width: 120px;
+    border-radius: 25px;
+    color: white;
+    font-weight: 700;
+}
+
+.input-text-select {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--input-dark-blue);
+    color: white;
+    padding: 20px;
+}

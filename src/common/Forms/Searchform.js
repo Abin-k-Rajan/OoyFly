@@ -54,10 +54,10 @@ function Searchform() {
     <form className="search-form" onSubmit={formSubmit}>
       <div className="text-inputs grid grid-flow-col gap-5 py-5">
           <div className="relative">
-              <TextField className="input-text" id='from-station' label='From Station' onChange={onValueChange}/>
+              <TextField className="input-text-search" id='from-station' label='From Station' onChange={onValueChange}/>
           </div>
           <div className="relative">
-              <TextField className="input-text" id="to-station" label='Destination' onChange={onValueChange}/>
+              <TextField className="input-text-search" id="to-station" label='Destination' onChange={onValueChange}/>
           </div>
       </div>
       <div className="grid grid-flow-col gap-5 place-content-start">
