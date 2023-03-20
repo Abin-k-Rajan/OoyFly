@@ -3,6 +3,7 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import React, { Fragment } from 'react'
 import PassengerClassCard from '../CustomInput/PassengerClassCard';
+import SearchStation from '../CustomInput/SearchStation';
 import './forms.scss'
 
 function UpdateSearchForm() {
@@ -11,12 +12,12 @@ function UpdateSearchForm() {
             <div className='update-form px-10 py-5'>
                 <div className='grid grid-flow-col gap-5'>
                     <div>
-                        <label className='white-label'>FROM</label>
-                        <input type={'text'} className='dark-input' />
+                        {/* <label className='white-label'>FROM</label> */}
+                        {/* <input type={'text'} className='dark-input' /> */}
+                        <SearchStation label='FROM'/>
                     </div>
                     <div>
-                        <label className='white-label'>TO</label>
-                        <input type={'text'} className='dark-input' />
+                        <SearchStation label='TO'/>
                     </div>
                     <div>
                         {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
