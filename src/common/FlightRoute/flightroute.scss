@@ -6,3 +6,28 @@
     padding: 20px;
     margin-top: 20px;
 }
+
+
+.small-text {
+    font-size: 0.8em;
+}
+
+.medium-text {
+    font-size: 1em;
+}
+
+.large-text {
+    font-size: 1.3em;
+}
+
+
+.bold {
+    font-weight: 500;
+}
+
+
+.logo {
+    height: 25px;
+    width: 25px;
+    color: var(--body-color-primary);
+}

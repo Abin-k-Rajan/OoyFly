@@ -18,3 +18,18 @@
 .bd-container {
   width: 100%;
 }
+
+.sub-heading {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.important {
+  background-color: rgb(204, 13, 13);
+  width: fit-content;
+  padding: 10px;
+  font-size: 0.8em;
+  font-weight: 500;
+  border-radius: 5px;
+  color: white;
+}

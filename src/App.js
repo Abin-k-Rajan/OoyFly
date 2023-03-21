@@ -16,7 +16,7 @@ function App() {
           <Route exact path='/' Component={Home} />
           <Route exact path='/about' Component={About} />
           <Route exact path='/list-flight' Component={ListPage} />
-          <Route exact path='/booking/:id' Component={BookingPage} />
+          <Route exact path='/booking' Component={BookingPage} />
         </Routes>
       </BrowserRouter>
     </div>

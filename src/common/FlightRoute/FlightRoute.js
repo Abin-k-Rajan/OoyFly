@@ -1,26 +1,47 @@
 import React from 'react'
 import './flightroute.scss'
+import {IoIosAirplane} from 'react-icons/io'
+import {TbPointFilled} from 'react-icons/tb'
 
 
 function FlightRoute() {
     return (
         <>
             <div className='container'>
-                <div className='grid grid-flow-col grid-cols-[40%_20%_40%]'>
+                <div className='grid grid-flow-col grid-cols-[10%_35%_20%_35%]'>
+                    <div className='m-auto'>
+                        <div className='grid place-content-center'>
+                            <div className='m-auto'>
+                                <img width={30} src="./indigo.jpg" />
+                            </div>
+                            <div className='small-text bold'>IndiGo</div>
+                        </div>
+                    </div>
                     <div className='px-5'>
-                        <div>31 Mar Fri 2023</div>
-                        <div>BLR 16:15</div>
-                        <div>Bengaluru International Airport</div>
+                        <div className='small-text'>31 Mar Fri 2023</div>
+                        <div className='large-text'>BLR <span className='bold'>16:15</span></div>
+                        <div className='small-text'>Bengaluru International Airport</div>
                     </div>
                     <div className='text-center'>
-                        <div>1h</div>
-                        <div>Flight Duration</div>
+                        <div className='flex'>
+                            <div className='m-auto'>
+                                <TbPointFilled className='logo' />
+                            </div>
+                            <div className='large-text bold'>1h 15m</div>
+                            <div className='m-auto'>
+                                <IoIosAirplane className='logo' />
+                            </div>
+                        </div>
+                        <div className='small-text'>Flight Duration</div>
                     </div>
                     <div className='px-5'>
-                        <div>31 Mar Fri 2023</div>
-                        <div>MAA 17:15</div>
-                        <div>Chennai International Airport</div>
+                        <div className='small-text'>31 Mar Fri 2023</div>
+                        <div className='large-text'>MAA <span className='bold'>17:15</span></div>
+                        <div className='small-text'>Chennai International Airport</div>
                     </div>
+                </div>
+                <div className='small-text px-5'>
+                    15 Kgs (1 piece only) Check-In, 7 Kgs (1 piece only) Cabin
                 </div>
             </div>
         </>
