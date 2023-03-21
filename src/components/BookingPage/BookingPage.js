@@ -4,6 +4,7 @@ import './bookingpage.scss'
 import { RiFlightTakeoffFill } from 'react-icons/ri';
 import Guideline from "../../common/Guidelines/Guidelines";
 import FareSummary from "../../common/FareSummary/FareSummary";
+import TravellerDetails from "../../common/Forms/TravellerDetails";
 
 function BookingPage() {
     return (
@@ -33,17 +34,14 @@ function BookingPage() {
                             <div>
                                 <Guideline />
                             </div>
+                            <div className="mr-5">
+                                <TravellerDetails />
+                            </div>
                         </div>
                         <div>
                             <FareSummary />
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div className="bd-container">
-                <div className="w-full bd-grid">
-                    <div>
-                        TRAVELLER DETAILS
+
                     </div>
                 </div>
             </div>
