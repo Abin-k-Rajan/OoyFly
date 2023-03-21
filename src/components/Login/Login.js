@@ -7,7 +7,7 @@ function Login() {
     return (
         <Fragment>
             <div className="h-[80vh] flex place-content-center">
-                <div class="container">
+                <div class="login-container container">
                     <h2 class="login-title">Log in</h2>
 
                     <form class="login-form">
