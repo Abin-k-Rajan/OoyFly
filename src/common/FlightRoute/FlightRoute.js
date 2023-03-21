@@ -7,7 +7,7 @@ import {TbPointFilled} from 'react-icons/tb'
 function FlightRoute() {
     return (
         <>
-            <div className='container'>
+            <div className='flightroute-container'>
                 <div className='grid grid-flow-col grid-cols-[10%_35%_20%_35%]'>
                     <div className='m-auto'>
                         <div className='grid place-content-center'>

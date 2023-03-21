@@ -3,6 +3,7 @@ import FlightRoute from "../../common/FlightRoute/FlightRoute";
 import './bookingpage.scss'
 import { RiFlightTakeoffFill } from 'react-icons/ri';
 import Guideline from "../../common/Guidelines/Guidelines";
+import FareSummary from "../../common/FareSummary/FareSummary";
 
 function BookingPage() {
     return (
@@ -33,8 +34,8 @@ function BookingPage() {
                                 <Guideline />
                             </div>
                         </div>
-                        <div className="ml-5 sub-heading">
-                            FARE SUMMARY
+                        <div>
+                            <FareSummary />
                         </div>
                     </div>
                 </div>
