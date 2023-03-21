@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import './header.scss'
 
 function Header(props) {
@@ -13,9 +14,9 @@ function Header(props) {
                     <div>Book Flight</div>
                 </div>
                 <div className="grid place-content-center">
-                    <div>
-                        LOGIN / SIGNUP
-                    </div>
+                    <Link to={'/login'}>
+                        <button>LOGIN / SIGNUP</button>
+                    </Link>
                 </div>
             </div>
         </Fragment>
