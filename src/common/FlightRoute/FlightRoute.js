@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './flightroute.scss'
 import {IoIosAirplane} from 'react-icons/io'
 import {TbPointFilled} from 'react-icons/tb'
+import PlaneSeating from '../../components/PlaneSeating/PlaneSeating'
 
 
-function FlightRoute() {
+function FlightRoute({plane_id}) {
+
+    const [selectSeats, setSelectSeats] = useState(false)
+
+    const [selectedSeats, setSelectedSeats] = useState([])
+    let pickedSeats = []
+
+
+    const closeSeatingInput = () => {
+        setSelectSeats(false)
+    }
+
+    const setNewSelectedSeats = (seats) => {
+        // pickedSeats = seats
+        setSelectedSeats(seats)
+        console.log(selectedSeats)
+    }
+
     return (
         <>
             <div className='flightroute-container'>
@@ -40,8 +58,18 @@ function FlightRoute() {
                         <div className='small-text'>Chennai International Airport</div>
                     </div>
                 </div>
-                <div className='small-text px-5'>
+                <div className='small-text px-5 flex place-content-between'>
+                    <div>
                     15 Kgs (1 piece only) Check-In, 7 Kgs (1 piece only) Cabin
+                    </div>
+                    <div>
+                        <button className='select-seats-button' onClick={() => setSelectSeats(true)}>
+                            SELECT SEATS
+                        </button>
+                    </div>
+                </div>
+                <div className={selectSeats === true ? 'show' : 'hidden'}>
+                    <PlaneSeating closeInput={closeSeatingInput} plane_id={plane_id} selectedSeats={selectedSeats} setSelectedSeats={setNewSelectedSeats}/>
                 </div>
             </div>
         </>

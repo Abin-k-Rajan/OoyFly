@@ -5,6 +5,7 @@ import { RiFlightTakeoffFill } from 'react-icons/ri';
 import Guideline from "../../common/Guidelines/Guidelines";
 import FareSummary from "../../common/FareSummary/FareSummary";
 import TravellerDetails from "../../common/Forms/TravellerDetails";
+import PlaneSeating from "../PlaneSeating/PlaneSeating";
 
 function BookingPage() {
     return (
@@ -27,8 +28,8 @@ function BookingPage() {
                                     <hr></hr>
                                 </div>
                                 <div className="block">
-                                    <FlightRoute />
-                                    <FlightRoute />
+                                    <FlightRoute plane_id={1} />
+                                    <FlightRoute plane_id={2}/>
                                 </div>
                             </div>
                             <div>
@@ -36,6 +37,8 @@ function BookingPage() {
                             </div>
                             <div className="mr-5">
                                 <TravellerDetails />
+                                {/* <PlaneSeating />
+                                <PlaneSeating/> */}
                             </div>
                         </div>
                         <div>
