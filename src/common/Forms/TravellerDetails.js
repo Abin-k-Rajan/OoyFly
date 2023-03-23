@@ -1,9 +1,18 @@
 import { TextField } from '@mui/material';
 import React, { Fragment } from 'react'
 
-const num_of_passengers = 3;
 
-function TravellerDetails () {
+function TravellerDetails ({num_of_passengers, proceedFunction}) {
+
+    const returnTravllerDetails = (e) => {
+        let passengers = []
+        Array.apply(0, Array(num_of_passengers)).map(function (val, index) {
+            passengers.push(document.getElementById(`passenger${index}`).value)
+        })
+        proceedFunction({passengers: passengers, email: document.getElementById(`mail_address`).value,
+                        phone: document.getElementById(`phone_number`).value})
+    }
+
     return (
         <Fragment>
             <div className='container mr-5'>
@@ -35,7 +44,7 @@ function TravellerDetails () {
                         </div>
                     </div>
                     <div className='flex place-content-end'> 
-                        <button className='proceed-button'>
+                        <button className='proceed-button' onClick={returnTravllerDetails}>
                             PROCEED
                         </button>
                     </div>

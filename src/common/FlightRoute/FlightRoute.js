@@ -5,7 +5,7 @@ import {TbPointFilled} from 'react-icons/tb'
 import PlaneSeating from '../../components/PlaneSeating/PlaneSeating'
 
 
-function FlightRoute({plane_id}) {
+function FlightRoute({plane_id, number_of_passengers, setNewSelectedSeats}) {
 
     const [selectSeats, setSelectSeats] = useState(false)
 
@@ -17,10 +17,10 @@ function FlightRoute({plane_id}) {
         setSelectSeats(false)
     }
 
-    const setNewSelectedSeats = (seats) => {
+    const setNewSelectedSeats_main = (seats) => {
         // pickedSeats = seats
         setSelectedSeats(seats)
-        console.log(selectedSeats)
+        setNewSelectedSeats(seats)
     }
 
     return (
@@ -69,7 +69,7 @@ function FlightRoute({plane_id}) {
                     </div>
                 </div>
                 <div className={selectSeats === true ? 'show' : 'hidden'}>
-                    <PlaneSeating closeInput={closeSeatingInput} plane_id={plane_id} selectedSeats={selectedSeats} setSelectedSeats={setNewSelectedSeats}/>
+                    <PlaneSeating number_of_passengers={number_of_passengers} closeInput={closeSeatingInput} plane_id={plane_id} selectedSeats={selectedSeats} setSelectedSeats={setNewSelectedSeats_main}/>
                 </div>
             </div>
         </>

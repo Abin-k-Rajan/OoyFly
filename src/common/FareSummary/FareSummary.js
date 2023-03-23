@@ -1,40 +1,9 @@
 import React, { Fragment } from 'react'
 import {MdDiscount} from 'react-icons/md'
 
-const fare_details = [
-    {
-        'Name': 'Base Fare',
-        'Value': 3800,
-        'Details': [
-            {'Name': 'Adult', 'Value': 1900, 'Count': 1},
-            {'Name': 'Child', 'Value': 1900, 'Count': 1}
-        ]   
-    },
-    {
-        'Name': 'Taxes and Sucharges',
-        'Value': 923,
-        'Details': []
-    },
-    {
-        'Name': 'Add Ons',
-        'Value': 899,
-        'Details': [
-            {'Name': 'Zero Cancellation', 'Value': 899, 'Count': 1}
-        ]
-    },
-    {
-        'Name': 'Discount',
-        'Value': 255,
-        'Details': [
-            {
-                'Name': 'GISUPER', 'Value': 255, 'Count': 1
-            }
-        ]
-    }
-]
-const grand_total = 3467;
 
-function FareSummary() {
+
+function FareSummary({travellerClassData, fare_details, grand_total}) {
     return (
         <Fragment>
             <div className='container p-5'>
@@ -43,7 +12,7 @@ function FareSummary() {
                         FARE SUMMARY
                     </div>
                     <div className='small-text mb-2'>
-                        1 Adult, 2 Children
+                        {`${travellerClassData[0] != 0 ? `${travellerClassData[0]} Adult,` : ''} ${travellerClassData[1] != 0 ? `${travellerClassData[1]} Child,` : ''} ${travellerClassData[2] != 0 ? `${travellerClassData[2]} Infant` : ''}`}
                     </div>
                     <hr></hr>
                 </div>

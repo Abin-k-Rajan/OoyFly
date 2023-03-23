@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route exact path='/' Component={Home} />
           <Route exact path='/list-flight' Component={ListPage} />
-          <Route exact path='/booking/:id' Component={BookingPage} />
+          <Route exact path='/booking' Component={BookingPage} />
           <Route exact path='/login' Component={Login} />
           <Route exact path='/register' Component={Register} />
           <Route exact path='/profile' Component={UserProfile} />

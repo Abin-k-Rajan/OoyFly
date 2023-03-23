@@ -3,7 +3,7 @@ import './planeseating.scss'
 import {GrClose} from 'react-icons/gr'
 
 
-function PlaneSeating ({closeInput, plane_id, max_seats = 3,selectedSeats, setSelectedSeats}) {
+function PlaneSeating ({closeInput, plane_id,selectedSeats, setSelectedSeats, number_of_passengers}) {
 
     const rows = 14;
     const row_start = 11;
@@ -24,7 +24,7 @@ function PlaneSeating ({closeInput, plane_id, max_seats = 3,selectedSeats, setSe
             return
         }
         selected_seats.push(seat_id_split[1])
-        if (selected_seats.length > max_seats)
+        if (selected_seats.length > number_of_passengers)
         {
             document.getElementById(`${plane_id}:${selected_seats[0]}`).checked = false
             selected_seats.shift()

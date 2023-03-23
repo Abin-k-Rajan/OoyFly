@@ -18,7 +18,7 @@ const props = {
 }
 
 
-function ListCard({props}) {
+function ListCard({props, travellerClassData}) {
     const [fromStation, setFromStation] = useState('')
     const [toStaiton, setToStation] = useState('')
     const [departure, setDeparture] = useState(0)
@@ -46,6 +46,7 @@ function ListCard({props}) {
 
         setMins(props.duration % 60)
         setHrs(parseInt(props.duration / 60))
+        console.log(travellerClassData)
     }, [])
 
     const get_airport_detils = (id) => {
@@ -89,7 +90,8 @@ function ListCard({props}) {
                         <div>&#x20B9; {props.rate}</div>
                     </div>
                     <div className="my-auto text-center">
-                        <Link to={`/booking/${props._id}`}>
+                        <Link to={`/booking`}
+                                    state={{id: props._id, travellerClassData: travellerClassData}}>
                             <button className="book-button">
                                 BOOK 
                             </button>

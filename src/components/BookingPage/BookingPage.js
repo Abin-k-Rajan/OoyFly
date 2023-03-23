@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import FlightRoute from "../../common/FlightRoute/FlightRoute";
 import './bookingpage.scss'
 import { RiFlightTakeoffFill } from 'react-icons/ri';
@@ -6,8 +6,59 @@ import Guideline from "../../common/Guidelines/Guidelines";
 import FareSummary from "../../common/FareSummary/FareSummary";
 import TravellerDetails from "../../common/Forms/TravellerDetails";
 import PlaneSeating from "../PlaneSeating/PlaneSeating";
+import { useLocation } from "react-router-dom";
 
-function BookingPage() {
+function BookingPage(props) {
+    const location = useLocation()
+    const { state } = location
+    const traveller_and_class = state.travellerClassData.split(" ")
+    traveller_and_class[0] = parseInt(traveller_and_class[0])
+    traveller_and_class[1] = parseInt(traveller_and_class[1])
+    traveller_and_class[2] = parseInt(traveller_and_class[2])
+
+    const [newSelectedSeats, setNewSelectedSeats] = useState([])
+
+    console.log(traveller_and_class)
+
+    const grand_total = 3049;
+
+    const fare_details = [
+        {
+            'Name': 'Base Fare',
+            'Value': 3800,
+            'Details': [
+                {'Name': 'Adult', 'Value': 1900, 'Count': traveller_and_class[0]},
+                {'Name': 'Child', 'Value': 1900, 'Count': traveller_and_class[1]},
+                {'Name': 'Infant', 'Value': 1900, 'Count': traveller_and_class[2]},
+            ]   
+        },
+        {
+            'Name': 'Taxes and Sucharges',
+            'Value': 923,
+            'Details': []
+        },
+        {
+            'Name': 'Add Ons',
+            'Value': 899,
+            'Details': [
+                {'Name': 'Zero Cancellation', 'Value': 899, 'Count': 1}
+            ]
+        },
+        {
+            'Name': 'Discount',
+            'Value': 255,
+            'Details': [
+                {
+                    'Name': 'GISUPER', 'Value': 255, 'Count': 1
+                }
+            ]
+        }
+    ]
+
+    const book_ticket = (v) => {
+        console.log(v)
+    }
+
     return (
         <Fragment>
             <div className="bd-container my-10">
@@ -28,21 +79,20 @@ function BookingPage() {
                                     <hr></hr>
                                 </div>
                                 <div className="block">
-                                    <FlightRoute plane_id={1} />
-                                    <FlightRoute plane_id={2}/>
+                                    <FlightRoute setNewSelectedSeats={setNewSelectedSeats} plane_id={1} number_of_passengers={traveller_and_class[0] + traveller_and_class[1]} />
                                 </div>
                             </div>
                             <div>
                                 <Guideline />
                             </div>
                             <div className="mr-5">
-                                <TravellerDetails />
+                                <TravellerDetails num_of_passengers={traveller_and_class[0] + traveller_and_class[1]} proceedFunction={book_ticket}/>
                                 {/* <PlaneSeating />
                                 <PlaneSeating/> */}
                             </div>
                         </div>
                         <div>
-                            <FareSummary />
+                            <FareSummary travellerClassData={traveller_and_class} fare_details={fare_details} grand_total={grand_total} />
                         </div>
 
                     </div>

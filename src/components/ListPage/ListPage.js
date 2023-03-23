@@ -27,7 +27,7 @@ function ListPage() {
             {
                 flights.length == 0 ? <div className='my-10 text-4xl bold flex place-content-center'><div>Flights Not Available ://</div></div> : 
                 flights.map((val) => (
-                    <ListCard props={val} />
+                    <ListCard props={val} travellerClassData={travellerClassData} />
                 ))
             }
             </div>
