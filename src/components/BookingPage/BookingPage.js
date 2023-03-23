@@ -7,6 +7,8 @@ import FareSummary from "../../common/FareSummary/FareSummary";
 import TravellerDetails from "../../common/Forms/TravellerDetails";
 import PlaneSeating from "../PlaneSeating/PlaneSeating";
 import { useLocation } from "react-router-dom";
+import { api_url } from "../../common";
+import axios from "axios";
 
 function BookingPage(props) {
     const location = useLocation()
@@ -55,8 +57,16 @@ function BookingPage(props) {
         }
     ]
 
-    const book_ticket = (v) => {
-        console.log(v)
+    const book_ticket = async (v) => {
+        const user_id = await localStorage.getItem("user_id")
+        const booking_data = {
+            passengers: v.passengers,
+            seats: newSelectedSeats,
+            user_id: user_id,
+            flight_route_id: state.id
+        }
+        const url = `${api_url}/user/add-ticket`
+        axios.post(url, booking_data).then(res => alert("Ticket purchased, Please view your profile to download ticket")).catch(err => console.log(err))
     }
 
 
