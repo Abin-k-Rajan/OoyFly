@@ -6,15 +6,12 @@ import PassengerClassCard from '../CustomInput/PassengerClassCard';
 import SearchStation from '../CustomInput/SearchStation';
 import './forms.scss'
 
-function UpdateSearchForm() {
+function UpdateSearchForm({fromStaiton, setFromStation, toStation, setToStation, departure, setDeparture, travellerClassData, setTravellerClassData, UpdateSearchFunction}) {
 
-    const [fromStaiton, setFromStation] = useState(0)
-    const [toStation, setToStation] = useState(0)
-    const [departure, setDeparture] = useState('')
-    const [travellerClassData, setTravellerClassData] = useState({})
+    
 
     const updateSearch = (event) => {
-        console.log(`${fromStaiton} ${toStation} ${departure} ${travellerClassData}`)
+        UpdateSearchFunction()
         // event.preventDefault();
     }
 
