@@ -1,16 +1,39 @@
-import React, { Fragment } from "react";
+import axios from "axios";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { api_url } from "../../common";
 import './login.scss'
 
 
 function Login() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const submitLogin = (event) => {
+        const url = `${api_url}/user/login`
+        axios.post(url, {
+            email: email,
+            password: password
+        }).then(res => {
+            if (res.status == 200) {
+                alert('User Logged in')
+                const user = res.data[0]
+                localStorage.setItem('username', user.username)
+                localStorage.setItem('user_id', user._id)
+            }
+        }).catch(err => {
+            alert('UserName or Password not valid')
+        })
+        event.preventDefault()
+    }
+
     return (
         <Fragment>
             <div className="h-[80vh] flex place-content-center">
                 <div class="login-container container">
                     <h2 class="login-title">Log in</h2>
 
-                    <form class="login-form">
+                    <form class="login-form" onSubmit={submitLogin}>
                         <div>
                         <label for="email">Email </label>
                         <input
@@ -19,6 +42,7 @@ function Login() {
                             placeholder="me@example.com"
                             name="email"
                             required
+                            onChange={(e) => setEmail(e.target.value)} 
                         />
                         </div>
 
@@ -30,6 +54,7 @@ function Login() {
                             placeholder="password"
                             name="password"
                             required
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         </div>
 

@@ -1,8 +1,10 @@
+import axios from "axios";
 import React, { Fragment, useEffect, useRef, useState } from "react";
+import { api_url } from "../../common";
 import './searchstation.scss'
 
 
-const stations = [
+const stations_1 = [
     {id: 1, station: 'Bangalore BLR'},
     {id: 2, station: 'Bangalore SBC'},
     {id: 3, station: 'Chenna CNB'},
@@ -24,10 +26,22 @@ const stations = [
 ]
 
 
-function SearchStation({label, theme, onChangeValue}) {
+function SearchStation({label, theme, onChangeValue, setStation}) {
+
+    const [stations, setStations] = useState([])
 
     const [filteredStation, setFilteredStation] = useState([])
     const [searchStationView, setSearchStationView] = useState(false)
+
+    useEffect(() => {
+        axios.get(`${api_url}/airport/get-aiports`)
+        .then(res => {
+            console.log(res)
+            setStations(res.data)
+        }).catch(err => {
+            console.log(err)
+        }) 
+    }, [])
 
     const input_ref = useRef()
 
@@ -42,7 +56,7 @@ function SearchStation({label, theme, onChangeValue}) {
     const filterStation = (event) => {
         const temp_list = []
         stations.forEach((val) => {
-            if (val.station.toLowerCase().match(event.target.value.toLowerCase()) === null)
+            if (val.name.toLowerCase().match(event.target.value.toLowerCase()) === null)
                 return;
             temp_list.push(val)
         })
@@ -53,8 +67,10 @@ function SearchStation({label, theme, onChangeValue}) {
 
     const change_text = (event) => {
         input_ref.current.value = event.target.value
+        setStation(event.target.id)
         setSearchStationView(false)
         onChangeValue(event.target.value)
+        event.preventDefault()
     }
 
     return (
@@ -66,13 +82,13 @@ function SearchStation({label, theme, onChangeValue}) {
                     <div className="search-view">
                         {
                             filteredStation.map((val) => (
-                                <button className="station_list_button" onClick={change_text} value={val.station}>
+                                <button className="station_list_button" onClick={change_text} value={val.name} id={val.id}>
                                     <div className="grid grid-cols-[20%_80%]">
-                                        <button value={val.station}>
+                                        <button value={val.name} id={val.id}>
                                             <img src="./airplane.jpg" />
                                         </button>
-                                        <button value={val.station} className='text-left'>
-                                            {val.station}
+                                        <button value={val.name} className='text-left' id={val.id}>
+                                            {val.name}
                                         </button>
                                     </div>
                                 </button>

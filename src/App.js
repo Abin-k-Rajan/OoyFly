@@ -8,6 +8,7 @@ import BookingPage from './components/BookingPage/BookingPage';
 import ListPage from './components/ListPage/ListPage';
 import Login from './components/Login/Login';
 import Register from './components/Login/Register';
+import UserProfile from './components/UserProfile/UserProfile';
 
 function App() {
   return (
@@ -16,11 +17,11 @@ function App() {
         <Header />
         <Routes>
           <Route exact path='/' Component={Home} />
-          <Route exact path='/about' Component={About} />
           <Route exact path='/list-flight' Component={ListPage} />
           <Route exact path='/booking' Component={BookingPage} />
           <Route exact path='/login' Component={Login} />
           <Route exact path='/register' Component={Register} />
+          <Route exact path='/profile' Component={UserProfile} />
         </Routes>
       </BrowserRouter>
     </div>

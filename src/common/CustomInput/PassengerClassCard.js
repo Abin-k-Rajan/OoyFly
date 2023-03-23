@@ -47,6 +47,7 @@ function PassengerClassCard(props) {
 
 
     const close_form = () => {
+        props.onValueChange(`${adultCount} ${childCount} ${infantCount} ${travellerClass}`)
         console.log(`${adultCount} ${childCount} ${infantCount} ${travellerClass}`)
         const passenger_cnt = adultCount + childCount + infantCount
         setTextValue(`${passenger_cnt} Traveller(s), ${travellerClass}`)
