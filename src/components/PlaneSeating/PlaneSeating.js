@@ -3,15 +3,21 @@ import './planeseating.scss'
 import {GrClose} from 'react-icons/gr'
 
 
-function PlaneSeating ({closeInput, plane_id,selectedSeats, setSelectedSeats, number_of_passengers}) {
+function PlaneSeating ({closeInput, plane_id,selectedSeats, setSelectedSeats, number_of_passengers, bookedSeats}) {
 
     const rows = 14;
     const row_start = 11;
     const row_end = 21;
     const cols = 6;
-
+    console.log(bookedSeats)
     const types = ['A', 'B', 'C', 'D', 'E', 'F']
     const exit_loc = 14
+
+    useEffect(() => {
+        bookedSeats.map((val) => {
+            // document.getElementById(`${plane_id}:${val}`).setAttribute("disabled", "")
+        })
+    }, [])
 
 
     const select_new_seat = (id) => {
@@ -54,7 +60,7 @@ function PlaneSeating ({closeInput, plane_id,selectedSeats, setSelectedSeats, nu
                                     {
                                         types.map((val) => (
                                             <li className='seat'>
-                                                <input type="checkbox" id={`${plane_id}:${index+1}${val}`} onClick={(event) => select_new_seat(event.target.id)} />
+                                                <input type="checkbox" disabled={bookedSeats.indexOf(`${index+1}${val}`) != -1 ? true : false} id={`${plane_id}:${index+1}${val}`} onClick={(event) => select_new_seat(event.target.id)} />
                                                 <label for={`${plane_id}:${index + 1}${val}`}>{`${index + 1}${val}`}</label>
                                             </li>
                                         ))

@@ -59,6 +59,7 @@ function BookingPage(props) {
         console.log(v)
     }
 
+
     return (
         <Fragment>
             <div className="bd-container my-10">
@@ -79,7 +80,7 @@ function BookingPage(props) {
                                     <hr></hr>
                                 </div>
                                 <div className="block">
-                                    <FlightRoute setNewSelectedSeats={setNewSelectedSeats} plane_id={1} number_of_passengers={traveller_and_class[0] + traveller_and_class[1]} />
+                                    <FlightRoute setNewSelectedSeats={setNewSelectedSeats} plane_id={state.id} number_of_passengers={traveller_and_class[0] + traveller_and_class[1]} />
                                 </div>
                             </div>
                             <div>
