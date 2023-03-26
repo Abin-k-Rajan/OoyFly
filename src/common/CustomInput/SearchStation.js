@@ -84,10 +84,10 @@ function SearchStation({label, theme, onChangeValue, setStation}) {
                             filteredStation.map((val) => (
                                 <button className="station_list_button" onClick={change_text} value={val.name} id={val.id}>
                                     <div className="grid grid-cols-[20%_80%]">
-                                        <button value={val.name} id={val.id}>
+                                        <button value={val.name} id={val.id} onClick={change_text}>
                                             <img src="./airplane.jpg" />
                                         </button>
-                                        <button value={val.name} className='text-left' id={val.id}>
+                                        <button value={val.name} className='text-left' id={val.id} onClick={change_text}>
                                             {val.name}
                                         </button>
                                     </div>

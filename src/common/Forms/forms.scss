@@ -88,6 +88,14 @@
   font-weight: 700;
 }
 
+input[type=datetime-local] {
+  padding: 10px;
+  border: 1px solid rgba($color: #c4c4c4, $alpha: 1.0);
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
 
 
 

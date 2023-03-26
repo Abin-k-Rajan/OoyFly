@@ -20,6 +20,7 @@ function Header(props) {
                 <div className="grid grid-flow-col gap-5 place-content-center">
                     <Link to='/list-flight'>Flights</Link>
                     <Link to={'/profile'}>Tickets</Link>
+                    <Link to={'/admin'}>Admin</Link>
                 </div>
                 <div className="grid place-content-center">
                         {

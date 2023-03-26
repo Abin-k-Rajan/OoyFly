@@ -9,6 +9,7 @@ import ListPage from './components/ListPage/ListPage';
 import Login from './components/Login/Login';
 import Register from './components/Login/Register';
 import UserProfile from './components/UserProfile/UserProfile';
+import Admin from './components/Admin/Admin';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path='/login' Component={Login} />
           <Route exact path='/register' Component={Register} />
           <Route exact path='/profile' Component={UserProfile} />
+          <Route exact path='/admin' Component={Admin} />
         </Routes>
       </BrowserRouter>
     </div>
