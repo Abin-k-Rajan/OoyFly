@@ -95,7 +95,7 @@ function ListCard({props, travellerClassData}) {
                     </div>
                     <div className="my-auto text-center">
                         <Link to={`/booking`}
-                                    state={{id: props._id, travellerClassData: travellerClassData, departure: departure}}>
+                                    state={{id: props._id, travellerClassData: travellerClassData, departure: departure, rate: props.rate}}>
                             <button className="book-button">
                                 BOOK 
                             </button>

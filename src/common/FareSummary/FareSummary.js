@@ -19,7 +19,7 @@ function FareSummary({travellerClassData, fare_details, grand_total}) {
                 <div>
                     {
                         fare_details.map((val) => (
-                            <div className='my-5'><div className='medium-text bold'>{val.Name}<span className='float-right bold'>{val.Name == 'Discount' ? '-':''} &#x20B9; {`${val.Value}`}</span></div>
+                            <div className='my-5'><div className='medium-text bold'>{val.Name}<span className='float-right bold'>{val.Name == 'Discount' ? '-':''} &#x20B9; {`${Math.abs(val.Value)}`}</span></div>
                                 {
                                     val.Details.map((detail_vals) => (
                                         <div className='small-text'>{`${detail_vals.Name} (${detail_vals.Count} x ${detail_vals.Value})`}</div>

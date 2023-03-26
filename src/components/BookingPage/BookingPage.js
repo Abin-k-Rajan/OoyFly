@@ -21,41 +21,58 @@ function BookingPage(props) {
     const [newSelectedSeats, setNewSelectedSeats] = useState([])
 
     console.log(traveller_and_class)
+    const [grand_total, setGrandTotal] = useState(0)
 
-    const grand_total = 3049;
+
+    const fees = [923, 899, -255]
 
     const fare_details = [
         {
             'Name': 'Base Fare',
-            'Value': 3800,
+            'Value': state.rate,
             'Details': [
-                {'Name': 'Adult', 'Value': 1900, 'Count': traveller_and_class[0]},
-                {'Name': 'Child', 'Value': 1900, 'Count': traveller_and_class[1]},
-                {'Name': 'Infant', 'Value': 1900, 'Count': traveller_and_class[2]},
+                {'Name': 'Adult', 'Value': state.rate, 'Count': traveller_and_class[0]},
+                {'Name': 'Child', 'Value': parseInt(state.rate - 0.25 * state.rate), 'Count': traveller_and_class[1]},
+                {'Name': 'Infant', 'Value': parseInt(state.rate - 0.5 * state.rate), 'Count': traveller_and_class[2]},
             ]   
         },
         {
             'Name': 'Taxes and Sucharges',
-            'Value': 923,
+            'Value': fees[0],
             'Details': []
         },
         {
             'Name': 'Add Ons',
-            'Value': 899,
+            'Value': fees[1],
             'Details': [
-                {'Name': 'Zero Cancellation', 'Value': 899, 'Count': 1}
+                {'Name': 'Zero Cancellation', 'Value': fees[1], 'Count': 1}
             ]
         },
         {
             'Name': 'Discount',
-            'Value': 255,
+            'Value': fees[2],
             'Details': [
                 {
-                    'Name': 'GISUPER', 'Value': 255, 'Count': 1
+                    'Name': 'GISUPER', 'Value': fees[2], 'Count': 1
                 }
             ]
         }
     ]
+
+    useEffect(() => {
+        compute_grand_total()
+    }, [])
+
+    const compute_grand_total = () => {
+        let total = 0
+        fare_details.map(val => {
+            val.Details.map(costs => {
+                total += costs.Value * costs.Count
+            })
+        })
+        console.log(total)
+        setGrandTotal(total)
+    }
 
     const book_ticket = async (v) => {
         const user_id = await localStorage.getItem("user_id")
