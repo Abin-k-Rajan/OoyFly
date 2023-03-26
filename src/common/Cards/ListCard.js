@@ -6,17 +6,6 @@ import { Link } from "react-router-dom";
 import { api_url } from "../../common";
 import './listcard.scss'
 
-const props = {
-    FromStation: 'BLR, Bengaluru Urban',
-    Departure: '10:15',
-    Layover: 'Indore 2h 50m',
-    Duration: '6h 15m',
-    Destination: 'DEL New Delhi, India',
-    Arrival: '00:20',
-    Price: 5629,
-    currency: 'INR'
-}
-
 
 function ListCard({props, travellerClassData}) {
     const [fromStation, setFromStation] = useState('')
@@ -51,13 +40,6 @@ function ListCard({props, travellerClassData}) {
         setHrs(parseInt(props.duration / 60))
     }, [])
 
-    const get_airport_detils = (id) => {
-        const url=`${api_url}/airport/get-airport-details?id=${id}`
-        let airport_detail;
-        axios.get(url).then(res => airport_detail = res.data[0])
-        console.log(airport_detail)
-        return 'test';
-    }
 
     return (
         <Fragment>
@@ -72,7 +54,7 @@ function ListCard({props, travellerClassData}) {
                             <span className="text-sm bold">{displayDate}</span>
                         </div>
                         <div className="sub-text">{fromStation.name}</div>
-                        <div className="heading">{departure}:{`${departureMins/10 < 1 ? '0' : ''}`}<span>{displayDate}</span></div>
+                        <div className="heading">{departure}:{`${departureMins/10 < 1 ? '0' : ''}`}{departureMins}</div>
                         <div className="sub-text">{fromStation.municipality} {fromStation.iata_code} {fromStation.ident}</div>
                     </div>
                     <div className="my-auto flex">
