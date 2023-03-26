@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './forms.scss'
 import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers";
@@ -8,6 +8,7 @@ import { Button, FormControl, FormControlLabel, InputLabel, MenuItem, Radio, Rad
 import { FormLabel } from "react-bootstrap";
 import SearchStation from "../CustomInput/SearchStation";
 import PassengerClassCard from "../CustomInput/PassengerClassCard";
+import { Link } from "react-router-dom";
 
 function Searchform() {
   const [toggle_options] = useState(['One-Way', 'Round-Trip', 'Multi-Way'])
@@ -16,7 +17,7 @@ function Searchform() {
 
   const [fromStation, setFromStation] = useState('')
   const [Destination, setDestination] = useState('')
-  const [Departure, setDeparture] = useState('')
+  const [Departure, setDeparture] = useState(new Date())
   const [returnDate, setReturnDate] = useState('')
   const [class_, setClass] = useState('')
   const [discount, setDiscount] = useState(0)
@@ -38,7 +39,7 @@ function Searchform() {
       'RETURN': returnDate,
       'CLASS': class_
     }
-    console.log(data)
+    const date = new Date(Departure)
     event.preventDefault();
   }
 
@@ -53,15 +54,15 @@ function Searchform() {
 
     
   return (
-    <form className="search-form" onSubmit={formSubmit}>
+    <div>
       <div className="text-inputs grid grid-flow-col gap-5 py-5">
           <div className="relative">
               {/* <TextField className="input-text-search" id='from-station' label='From Station' onChange={onValueChange}/> */}
-              <SearchStation label='FROM' theme='light' onChangeValue={(val) => setFromStation(val)}/>
+              <SearchStation label='FROM' theme='light' setStation={setFromStation}/>
           </div>
           <div className="relative">
               {/* <TextField className="input-text-search" id="to-station" label='Destination' onChange={onValueChange}/> */}
-              <SearchStation label='TO' theme='light' onChangeValue={(val) => setDestination(val)}/>
+              <SearchStation label='TO' theme='light' setStation={setDestination}/>
           </div>
       </div>
       <div className="grid grid-flow-col gap-5 place-content-start">
@@ -98,9 +99,16 @@ function Searchform() {
         </FormControl>
       </div>
       <div className="relative">
-        <input className="submit-btn" type={'submit'} value='Search Flights' />
+        <Link to={'/list-flight'} state={{
+          from: fromStation,
+          to: Destination,
+          departure: new Date(Departure).toISOString(),
+          travllerClassData: class_
+        }}>
+          <button className="submit-btn">Search Flights</button>
+        </Link>
       </div>
-    </form>
+    </div>
   );
 }
 
