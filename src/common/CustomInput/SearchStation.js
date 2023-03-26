@@ -1,47 +1,14 @@
-import axios from "axios";
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import { api_url } from "../../common";
+import { useStation } from "../../InfoProvider";
 import './searchstation.scss'
-
-
-const stations_1 = [
-    {id: 1, station: 'Bangalore BLR'},
-    {id: 2, station: 'Bangalore SBC'},
-    {id: 3, station: 'Chenna CNB'},
-    {id: 4, station: 'Delhi DLR'},
-    {id: 5, station: 'Chandigarh CGH'},
-    {id: 6, station: 'Trivandrum TVC'},
-    {id: 7, station: 'Kochi KCV'},
-    {id: 8, station: 'Guhati GHL'},
-    {id: 9, station: 'Lucknow LKN'},
-    {id: 1, station: 'Bangalore BLR'},
-    {id: 2, station: 'Bangalore SBC'},
-    {id: 3, station: 'Chenna CNB'},
-    {id: 4, station: 'Delhi DLR'},
-    {id: 5, station: 'Chandigarh CGH'},
-    {id: 6, station: 'Trivandrum TVC'},
-    {id: 7, station: 'Kochi KCV'},
-    {id: 8, station: 'Guhati GHL'},
-    {id: 9, station: 'Lucknow LKN'}    
-]
 
 
 function SearchStation({label, theme, onChangeValue, setStation}) {
 
-    const [stations, setStations] = useState([])
-
     const [filteredStation, setFilteredStation] = useState([])
     const [searchStationView, setSearchStationView] = useState(false)
 
-    useEffect(() => {
-        axios.get(`${api_url}/airport/get-aiports`)
-        .then(res => {
-            console.log(res)
-            setStations(res.data)
-        }).catch(err => {
-            console.log(err)
-        }) 
-    }, [])
+    const { stations } = useStation()
 
     const input_ref = useRef()
 
