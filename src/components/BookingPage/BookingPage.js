@@ -6,9 +6,10 @@ import Guideline from "../../common/Guidelines/Guidelines";
 import FareSummary from "../../common/FareSummary/FareSummary";
 import TravellerDetails from "../../common/Forms/TravellerDetails";
 import PlaneSeating from "../PlaneSeating/PlaneSeating";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { api_url } from "../../common";
 import axios from "axios";
+import { useAuth } from "../../AuthProvider";
 
 function BookingPage(props) {
     const location = useLocation()
@@ -18,11 +19,13 @@ function BookingPage(props) {
     traveller_and_class[1] = parseInt(traveller_and_class[1])
     traveller_and_class[2] = parseInt(traveller_and_class[2])
 
+    const navigate = useNavigate()
+
     const [newSelectedSeats, setNewSelectedSeats] = useState([])
 
     console.log(traveller_and_class)
     const [grand_total, setGrandTotal] = useState(0)
-
+    const {auth, user} = useAuth()
 
     const fees = [923, 899, -255]
 
@@ -75,7 +78,16 @@ function BookingPage(props) {
     }
 
     const book_ticket = async (v) => {
-        const user_id = await localStorage.getItem("user_id")
+        if (auth == false)
+        {
+            alert('Please Login to Purchase Ticket !!')
+            return;
+        }
+        if (newSelectedSeats.length != (traveller_and_class[0] + traveller_and_class[1])) {
+            alert('Plase select seats!!!')
+            return;
+        }
+        const user_id = user._id
         const booking_data = {
             passengers: v.passengers,
             seats: newSelectedSeats,
@@ -87,9 +99,18 @@ function BookingPage(props) {
             id: state.id,
             booked_seats: newSelectedSeats
         }
+        if (auth === false)
+        {
+            alert('Please login to purchase ticket')
+            return
+        }
+        console.log(newSelectedSeats)
         const url = `${api_url}/user/add-ticket`
         axios.post(url, booking_data).then(res => alert("Ticket purchased, Please view your profile to download ticket")).catch(err => console.log(err))
-        axios.post(`${api_url}/flights/book-seat`, booked_seats_data).then(res => console.log(res)).catch(err => console.log('Booking failed'))
+        axios.post(`${api_url}/flights/book-seat`, booked_seats_data).then(res => {
+            alert('Ticket booked!!')
+            navigate('/profile')
+        }).catch(err => console.log('Booking failed'))
     }
 
 

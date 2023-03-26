@@ -1,8 +1,10 @@
 import { TextField } from '@mui/material';
 import React, { Fragment } from 'react'
+import { useAuth } from '../../AuthProvider';
 
 
 function TravellerDetails ({num_of_passengers, proceedFunction}) {
+    
 
     const returnTravllerDetails = (e) => {
         let passengers = []
