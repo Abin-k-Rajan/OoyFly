@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../AuthProvider";
 import { api_url } from "../../common";
 import './login.scss'
 
@@ -8,6 +9,7 @@ import './login.scss'
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const { setAuth, setUser } = useAuth();
 
     const submitLogin = (event) => {
         const url = `${api_url}/user/login`
@@ -20,6 +22,8 @@ function Login() {
                 const user = res.data[0]
                 localStorage.setItem('username', user.username)
                 localStorage.setItem('user_id', user._id)
+                setUser(user.username)
+                setAuth(true)
             }
         }).catch(err => {
             alert('UserName or Password not valid')

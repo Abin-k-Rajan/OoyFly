@@ -20,7 +20,7 @@ function ListTicket({plane_id, passengers, seats}) {
     const [mins, setMins] = useState()
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/flights/get-flight-detail?id=641c17fd7395c320aca21cf1`).then(res => {
+        axios.get(`${api_url}/flights/get-flight-detail?id=${plane_id}`).then(res => {
         const from_url=`${api_url}/airport/get-airport-details?id=${res.data[0].from}`
         const to_url=`${api_url}/airport/get-airport-details?id=${res.data[0].to}`
 

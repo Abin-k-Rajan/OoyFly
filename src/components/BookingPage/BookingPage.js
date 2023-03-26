@@ -65,8 +65,13 @@ function BookingPage(props) {
             user_id: user_id,
             flight_route_id: state.id
         }
+        const booked_seats_data = {
+            id: state.id,
+            booked_seats: newSelectedSeats
+        }
         const url = `${api_url}/user/add-ticket`
         axios.post(url, booking_data).then(res => alert("Ticket purchased, Please view your profile to download ticket")).catch(err => console.log(err))
+        axios.post(`${api_url}/flights/book-seat`, booked_seats_data).then(res => console.log(res)).catch(err => console.log('Booking failed'))
     }
 
 
@@ -84,7 +89,7 @@ function BookingPage(props) {
                                             <RiFlightTakeoffFill className="logo" />
                                         </div>
                                         <div>
-                                            Bengaluru to New Delhi
+                                            Flying made easy ooyfly
                                         </div>
                                     </div>
                                     <hr></hr>
