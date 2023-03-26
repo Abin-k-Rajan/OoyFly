@@ -7,7 +7,7 @@ import { api_url } from '../../common'
 import axios from 'axios'
 
 
-function FlightRoute({plane_id, number_of_passengers, setNewSelectedSeats}) {
+function FlightRoute({plane_id, number_of_passengers, setNewSelectedSeats, photo, name}) {
 
     const [selectSeats, setSelectSeats] = useState(false)
 
@@ -74,9 +74,9 @@ function FlightRoute({plane_id, number_of_passengers, setNewSelectedSeats}) {
                     <div className='m-auto'>
                         <div className='grid place-content-center'>
                             <div className='m-auto'>
-                                <img width={30} src="./indigo.jpg" />
+                                <img width={30} src={`./flight-logos/${photo}.jpg` }/>
                             </div>
-                            <div className='small-text bold'>IndiGo</div>
+                            <div className='small-text bold text-center'>{name}</div>
                         </div>
                     </div>
                     <div className='px-5'>

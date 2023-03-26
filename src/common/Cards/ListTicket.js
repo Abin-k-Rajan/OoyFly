@@ -4,7 +4,7 @@ import {IoIosAirplane} from 'react-icons/io'
 import {TbPointFilled} from 'react-icons/tb'
 import { api_url } from "../../common";
 
-function ListTicket({plane_id, passengers, seats}) {
+function ListTicket({plane_id, passengers, seats, photo}) {
 
     const [fromStation, setFromStation] = useState('')
     const [toStaiton, setToStation] = useState('')
@@ -42,6 +42,7 @@ function ListTicket({plane_id, passengers, seats}) {
         setHrs(parseInt(res.data[0].duration / 60))
 
     })
+    console.log('testing')
     }, [])
     return (
         <>
@@ -50,9 +51,9 @@ function ListTicket({plane_id, passengers, seats}) {
                     <div className='m-auto'>
                         <div className='grid place-content-center'>
                             <div className='m-auto'>
-                                <img width={30} src="./indigo.jpg" />
+                                <img width={30} src={`./flight-logos/${photo}.jpg`} />
                             </div>
-                            <div className='small-text bold'>IndiGo</div>
+                            <div className='small-text bold'>{photo}</div>
                         </div>
                     </div>
                     <div className='px-5'>

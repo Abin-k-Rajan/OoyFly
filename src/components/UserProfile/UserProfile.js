@@ -3,7 +3,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useAuth } from "../../AuthProvider";
 import { api_url } from "../../common";
 import ListTicket from "../../common/Cards/ListTicket";
-import FlightRoute from "../../common/FlightRoute/FlightRoute";
 import './userprofile.scss'
 
 
@@ -13,7 +12,9 @@ function UserProfile () {
 
     useEffect(() => {
         if (auth == true)
-            axios.get(`${api_url}/user/get-tickets?user_id=${user._id}`).then(res => setTickets(res.data))
+            axios.get(`${api_url}/user/get-tickets?user_id=${user._id}`).then(res => setTickets(res.data)).catch(err => {
+                console.log('No Tickets booked')
+            })
     }, [])
 
     return (

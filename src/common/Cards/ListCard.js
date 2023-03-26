@@ -48,7 +48,7 @@ function ListCard({props, travellerClassData}) {
                     <div className="my-auto">
                         <div className="flex gap-4">
                             <span>
-                            <img width={25} height={25} src="./indigo.jpg" />
+                            <img width={45} height={45} src={`./flight-logos/${props.photo}.jpg`} />
                             </span>
                             <span>{props.airplane_name}</span>
                             <span className="text-sm bold">{displayDate}</span>
@@ -77,7 +77,7 @@ function ListCard({props, travellerClassData}) {
                     </div>
                     <div className="my-auto text-center">
                         <Link to={`/booking`}
-                                    state={{id: props._id, travellerClassData: travellerClassData, departure: departure, rate: props.rate}}>
+                                    state={{id: props._id, travellerClassData: travellerClassData, departure: departure, rate: props.rate, photo: props.photo, name: props.airplane_name}}>
                             <button className="book-button">
                                 BOOK 
                             </button>

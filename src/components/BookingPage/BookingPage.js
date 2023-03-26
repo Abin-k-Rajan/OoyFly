@@ -142,7 +142,7 @@ function BookingPage(props) {
                                     <hr></hr>
                                 </div>
                                 <div className="block">
-                                    <FlightRoute setNewSelectedSeats={setNewSelectedSeats} plane_id={state.id} number_of_passengers={traveller_and_class[0] + traveller_and_class[1]} />
+                                    <FlightRoute setNewSelectedSeats={setNewSelectedSeats} plane_id={state.id} number_of_passengers={traveller_and_class[0] + traveller_and_class[1]} photo={state.photo} name={state.name}/>
                                 </div>
                             </div>
                             <div>
