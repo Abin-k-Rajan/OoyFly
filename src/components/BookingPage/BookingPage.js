@@ -29,10 +29,18 @@ function BookingPage(props) {
 
     const fees = [923, 899, -255]
 
+    const compute_base_fare = () => {
+        let rate = 0
+        rate = parseInt(state.rate) * traveller_and_class[0] +
+            parseInt(state.rate - 0.25 * state.rate) * traveller_and_class[1] +
+            parseInt(state.rate - 0.5 * state.rate) * traveller_and_class[2]
+        return rate
+    }
+
     const fare_details = [
         {
             'Name': 'Base Fare',
-            'Value': state.rate,
+            'Value': compute_base_fare(),
             'Details': [
                 {'Name': 'Adult', 'Value': state.rate, 'Count': traveller_and_class[0]},
                 {'Name': 'Child', 'Value': parseInt(state.rate - 0.25 * state.rate), 'Count': traveller_and_class[1]},
