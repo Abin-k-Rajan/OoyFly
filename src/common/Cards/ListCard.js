@@ -25,6 +25,7 @@ function ListCard({props, travellerClassData}) {
     const [departureMins, setDepartureMins] = useState(0)
     const [arrival, setArrival] = useState(0)
     const [arrivalMins, setArrivalMins] = useState(0)
+    const [displayDate, setDisplayDate] = useState('')
 
     const [hrs, setHrs] = useState()
     const [mins, setMins] = useState()
@@ -38,6 +39,8 @@ function ListCard({props, travellerClassData}) {
 
         const departure_date = new Date(props.departure)
         const arrival_date = new Date(props.arrival)
+
+        setDisplayDate(`${departure_date.getDate()}/${departure_date.getMonth() + 1}/${departure_date.getFullYear()}`)
 
         setDeparture(departure_date.getHours())
         setDepartureMins(departure_date.getMinutes())
@@ -61,13 +64,15 @@ function ListCard({props, travellerClassData}) {
             <div className="listcard-container my-10">
                 <div className="grid grid-cols-5 h-full px-10">
                     <div className="my-auto">
-                        <div>
+                        <div className="flex gap-4">
                             <span>
                             <img width={25} height={25} src="./indigo.jpg" />
                             </span>
+                            <span>{props.airplane_name}</span>
+                            <span className="text-sm bold">{displayDate}</span>
                         </div>
                         <div className="sub-text">{fromStation.name}</div>
-                        <div className="heading">{departure}:{`${departureMins/10 < 1 ? '0' : ''}`}<span>{departureMins}</span></div>
+                        <div className="heading">{departure}:{`${departureMins/10 < 1 ? '0' : ''}`}<span>{displayDate}</span></div>
                         <div className="sub-text">{fromStation.municipality} {fromStation.iata_code} {fromStation.ident}</div>
                     </div>
                     <div className="my-auto flex">
@@ -90,7 +95,7 @@ function ListCard({props, travellerClassData}) {
                     </div>
                     <div className="my-auto text-center">
                         <Link to={`/booking`}
-                                    state={{id: props._id, travellerClassData: travellerClassData}}>
+                                    state={{id: props._id, travellerClassData: travellerClassData, departure: departure}}>
                             <button className="book-button">
                                 BOOK 
                             </button>

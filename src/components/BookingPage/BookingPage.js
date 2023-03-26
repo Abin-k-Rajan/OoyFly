@@ -63,7 +63,8 @@ function BookingPage(props) {
             passengers: v.passengers,
             seats: newSelectedSeats,
             user_id: user_id,
-            flight_route_id: state.id
+            flight_route_id: state.id,
+            departure: state.departure
         }
         const booked_seats_data = {
             id: state.id,

@@ -76,7 +76,7 @@ function Searchform() {
         </LocalizationProvider>
         </div>
         <div>
-          <PassengerClassCard theme='light' />
+          <PassengerClassCard theme='light' onValueChange={setClass}/>
         </div>
       </div>
       <div className="grid grid-flow-col gap-8 place-content-center my-5">
