@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
+import { useAuth } from "../../AuthProvider";
 import { api_url } from "../../common";
 import ListTicket from "../../common/Cards/ListTicket";
 import FlightRoute from "../../common/FlightRoute/FlightRoute";
@@ -8,10 +9,11 @@ import './userprofile.scss'
 
 function UserProfile () {
     const [tickets, setTickets] = useState([])
+    const {user, auth} = useAuth()
 
     useEffect(() => {
-        const user_id = localStorage.getItem('user_id')
-        axios.get(`${api_url}/user/get-tickets?user_id=${user_id}`).then(res => setTickets(res.data))
+        if (auth == true)
+            axios.get(`${api_url}/user/get-tickets?user_id=${user._id}`).then(res => setTickets(res.data))
     }, [])
 
     return (
@@ -26,9 +28,11 @@ function UserProfile () {
                     </div>
                     <div>
                         {
+                            auth == true ? 
                             tickets.map((val, index) => (
                                 <ListTicket plane_id={val.flight_route_id} passengers={val.passengers} seats={val.seats}/>
-                            ))
+                            )) :
+                            <div className="text-3xl">Please Login to View your Tickets</div>
                         }
                     </div>
                 </div>

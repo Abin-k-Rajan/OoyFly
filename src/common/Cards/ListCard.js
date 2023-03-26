@@ -46,7 +46,6 @@ function ListCard({props, travellerClassData}) {
 
         setMins(props.duration % 60)
         setHrs(parseInt(props.duration / 60))
-        console.log(travellerClassData)
     }, [])
 
     const get_airport_detils = (id) => {
