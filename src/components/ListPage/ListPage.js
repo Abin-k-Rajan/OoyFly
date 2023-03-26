@@ -9,16 +9,25 @@ import UpdateSearchForm from '../../common/Forms/UpdateSearchForm';
 
 function ListPage() {
 
-    const [fromStaiton, setFromStation] = useState(0)
-    const [toStation, setToStation] = useState(0)
-    const [departure, setDeparture] = useState('')
-    const [travellerClassData, setTravellerClassData] = useState({})
+    const [fromStaiton, setFromStation] = useState(null)
+    const [toStation, setToStation] = useState(null)
+    const [departure, setDeparture] = useState(null)
+    const [travellerClassData, setTravellerClassData] = useState(null)
 
     const [flights, setFlights] = useState([])
 
     const updateSearchFunction = () => {
+        if (fromStaiton === null || toStation === null || departure === null || travellerClassData === null) {
+            alert('Please fill all the details to search!!')
+            return
+        }
         const url = `${api_url}/flights/get-flights?from=${fromStaiton}&to=${toStation}`
-        axios.get(url).then(res => setFlights(res.data)).catch(err => console.log(err))
+        axios.get(url).then(res => {
+            setFlights(res.data)
+            console.log(res.data)
+        }).catch(err => {console.log(err);
+            alert('Flight Route Not Available!! Please add a new route through Admin Page for demo!!')
+        })
     }
     return (
         <Fragment>
